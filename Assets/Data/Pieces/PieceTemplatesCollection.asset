@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dae63aa8adb4d368f77a86000024c0, type: 3}
+  m_Name: PieceTemplatesCollection
+  m_EditorClassIdentifier: 
+  guid:
+    value1: 4841614449234921073
+    value2: -3775496012834046582
+  items:
+  - {fileID: 11400000, guid: 1c87f173023bf48ff9b177b8e13cc1b4, type: 2}
+  - {fileID: 11400000, guid: ad33bd55a342f46e99ea96aaf573f254, type: 2}
+  - {fileID: 11400000, guid: 595572c15700f4363a0cff7b224ceed9, type: 2}
+  - {fileID: 11400000, guid: ad04e34858c6f4353bf572b487167de2, type: 2}
+  - {fileID: 11400000, guid: becad9a7fada8430280272806108e733, type: 2}
+  - {fileID: 11400000, guid: 22b2bce7de9b442c4994b44522eae94b, type: 2}
+  - {fileID: 11400000, guid: db56f68d12db648aca524a47b29ea892, type: 2}
+  - {fileID: 11400000, guid: ce6a92d25c64849ddbbd4496c81bcf85, type: 2}
+  automaticallyLoaded: 1

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d7b1e636474ffb92b393e3cfa5e42b, type: 3}
+  m_Name: Match3Config
+  m_EditorClassIdentifier: 
+  areaBlastPieceTemplate: {fileID: 11400000, guid: 6e6b4e2b2340c436aa6645513f0d2633, type: 2}
+  horizontalLinearBlastPieceTemplate: {fileID: 11400000, guid: 43fafcba96c6f6d438d1c4b93c36d9c0, type: 2}
+  verticalLinearBlastPieceTemplate: {fileID: 11400000, guid: 754b2e3f9d073a844a5e4225ba27ece3, type: 2}
+  delayPiecesFall: 0.2
+  delayStartRefillingBoard: 0.2
+  delayFindMatchesAfterRefill: 0.2
+  delayCheckMove: 0.5
+  delayCheckMatchesAfterRefill: 0.75
+  delayUnblockBoardAfterRefill: 0.2
+  delayUnblockBoardAfterRollback: 0.2
+  durationPieceDestroyVFX: 0.5

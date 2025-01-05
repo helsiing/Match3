@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05cb207343be8cc4c889cc92fb56aef7, type: 3}
+  m_Name: Green
+  m_EditorClassIdentifier: 
+  guid:
+    value1: 4737175401487413339
+    value2: 8886319661586798243
+  collectionGUID:
+    value1: 4841614449234921073
+    value2: -3775496012834046582
+  traits:
+  - rid: 3924880680380006412
+  references:
+    version: 2
+    RefIds:
+    - rid: 3924880680380006412
+      type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+      data:
+        prefab: {fileID: 798412733444203854, guid: 3c7e7993ca03a10458c6bd4245c72823, type: 3}
