@@ -10,26 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05cb207343be8cc4c889cc92fb56aef7, type: 3}
-  m_Name: NonMovable
+  m_Name: Piece (Ice)
   m_EditorClassIdentifier: 
-  guid:
-    value1: 4853506217459563465
-    value2: -4349687182958195835
-  collectionGUID:
-    value1: 4841614449234921073
-    value2: -3775496012834046582
-  points: 100
-  traits:
-  - rid: 2092702894086684728
-  - rid: 2092702894086684729
+  points: 0
+  Traits:
+  - rid: 3924880703208554567
+  - rid: 3924880703208554568
   references:
     version: 2
     RefIds:
-    - rid: 2092702894086684728
+    - rid: 3924880703208554567
       type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: VoodooMatch3}
       data:
         prefab: {fileID: 1404223659157920435, guid: 5da8388de956d0d4ebfa877a77a8f623, type: 3}
-    - rid: 2092702894086684729
+    - rid: 3924880703208554568
       type: {class: UiObject, ns: VoodooMatch3.Models.Traits, asm: VoodooMatch3}
       data:
         sprite: {fileID: 21300000, guid: cb66485cf8cc4c34a9d0d7673fd1e442, type: 3}

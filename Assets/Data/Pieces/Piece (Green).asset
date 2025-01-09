@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05cb207343be8cc4c889cc92fb56aef7, type: 3}
+  m_Name: Piece (Green)
+  m_EditorClassIdentifier: 
+  points: 0
+  Traits:
+  - rid: 3924880703208554545
+  - rid: 3924880703208554550
+  - rid: 3924880703208554555
+  - rid: 3924880703208554560
+  - rid: 3924880703208554565
+  references:
+    version: 2
+    RefIds:
+    - rid: 3924880703208554545
+      type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: VoodooMatch3}
+      data:
+        prefab: {fileID: 798412733444203854, guid: 3c7e7993ca03a10458c6bd4245c72823, type: 3}
+    - rid: 3924880703208554550
+      type: {class: UiObject, ns: VoodooMatch3.Models.Traits, asm: VoodooMatch3}
+      data:
+        sprite: {fileID: 21300004, guid: 51e2a399831333b478ec978ee598bf0e, type: 3}
+    - rid: 3924880703208554555
+      type: {class: ColorPiece, ns: VoodooMatch3.Models.Traits, asm: VoodooMatch3}
+      data:
+        Color: {r: 0, g: 0, b: 0, a: 0}
+    - rid: 3924880703208554560
+      type: {class: Destroyable, ns: VoodooMatch3.Models.Traits, asm: VoodooMatch3}
+      data:
+        destroyEffectPrefab: {fileID: 2005243804868500012, guid: 8b75cf7d702b8534fae7871a3318b5f4, type: 3}
+    - rid: 3924880703208554565
+      type: {class: Movable, ns: VoodooMatch3.Models.Traits, asm: VoodooMatch3}
+      data: 

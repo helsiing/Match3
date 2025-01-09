@@ -10,12 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2086914166910276361, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: m_Name
-      value: BoardPiece_HorizontalLinearBlast
+      value: BoardPiece (HorizontalLinearBlast)
       objectReference: {fileID: 0}
     - target: {fileID: 4025138749313130814, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: pieceTemplate
       value: 
-      objectReference: {fileID: 11400000, guid: db56f68d12db648aca524a47b29ea892, type: 2}
+      objectReference: {fileID: 11400000, guid: e7d6eff149b6e4e8abdf2fbc6df520ce, type: 2}
     - target: {fileID: 6108172082637112376, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

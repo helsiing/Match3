@@ -1,32 +1,38 @@
 #region
 
-using System.Collections.Generic;
-using BrunoMikoski.ScriptableObjectCollections;
 using UnityEngine;
 #endregion
 
 namespace VoodooMatch3.Models
 {
-    public class PieceTemplate : ScriptableObjectCollectionItem
+    [CreateAssetMenu(menuName = "VoodooMatch3/PieceTemplate", fileName = "PieceTemplate", order = 0)]
+    public class PieceTemplate : ScriptableObject
     {
         [SerializeField] private int points;
         public int Points => points;
         
+        
         [SerializeReference, SubclassSelector]
-        private List<PieceTrait> traits = new ();
-        public List<PieceTrait> Traits => traits;
+        public PieceTrait[] Traits;
         
         public bool TryGetTrait<T>(out T trait) where T : PieceTrait
         {
-            
-            int index = traits.FindIndex(x => x.GetType() == typeof(T));
+            int index = -1;
+            for(int i = 0; i < Traits.Length; i++)
+            {
+                if (Traits[i].GetType() == typeof(T))
+                {
+                    index = i;
+                    break;
+                }
+            }
             if (index < 0)
             {
                 trait = null;
                 return false;
             }
 
-            trait = traits[index] as T;
+            trait = Traits[index] as T;
             return true;
         }
         
@@ -37,7 +43,7 @@ namespace VoodooMatch3.Models
 
         public bool ValidateConfig()
         {
-            foreach (PieceTrait trait in traits)
+            foreach (PieceTrait trait in Traits)
             {
                 if (!trait.ValidateConfig())
                 {

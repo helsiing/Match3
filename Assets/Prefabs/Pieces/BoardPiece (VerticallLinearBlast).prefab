@@ -72,12 +72,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2086914166910276361, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: m_Name
-      value: BoardPiece_VerticallLinearBlast
+      value: BoardPiece (VerticallLinearBlast)
       objectReference: {fileID: 0}
     - target: {fileID: 4025138749313130814, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: pieceTemplate
       value: 
-      objectReference: {fileID: 11400000, guid: ce6a92d25c64849ddbbd4496c81bcf85, type: 2}
+      objectReference: {fileID: 11400000, guid: 0312bcfdc0dc64006bff6c79c5fb22bf, type: 2}
     - target: {fileID: 6108172082637112376, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

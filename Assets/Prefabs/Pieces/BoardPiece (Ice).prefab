@@ -10,12 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2086914166910276361, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: m_Name
-      value: BoardPiece (StaticBlock)
+      value: BoardPiece (Ice)
       objectReference: {fileID: 0}
     - target: {fileID: 4025138749313130814, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: pieceTemplate
       value: 
-      objectReference: {fileID: 11400000, guid: a81c81f886094a54d9a3bb29c93833bd, type: 2}
+      objectReference: {fileID: 11400000, guid: dbb6f8235a2de4b55b2abeba6b71e9db, type: 2}
     - target: {fileID: 6108172082637112376, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

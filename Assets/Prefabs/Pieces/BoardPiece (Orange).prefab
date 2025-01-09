@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 4025138749313130814, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: pieceTemplate
       value: 
-      objectReference: {fileID: 11400000, guid: 595572c15700f4363a0cff7b224ceed9, type: 2}
+      objectReference: {fileID: 11400000, guid: d8deb042938874097be72aa85fa78f40, type: 2}
     - target: {fileID: 6108172082637112376, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

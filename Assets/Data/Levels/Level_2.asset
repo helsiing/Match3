@@ -21,20 +21,18 @@ MonoBehaviour:
   width: 7
   height: 7
   scoreToWin: 1000
+  timeToWin: 1000
   tilePrefab: {fileID: 5003974817802510734, guid: 91de6bd93c5a47843a2341e625225594, type: 3}
   availableColorPieces:
-  - {fileID: 11400000, guid: 1c87f173023bf48ff9b177b8e13cc1b4, type: 2}
-  - {fileID: 11400000, guid: ad33bd55a342f46e99ea96aaf573f254, type: 2}
-  - {fileID: 11400000, guid: 595572c15700f4363a0cff7b224ceed9, type: 2}
-  - {fileID: 11400000, guid: ad04e34858c6f4353bf572b487167de2, type: 2}
-  - {fileID: 11400000, guid: becad9a7fada8430280272806108e733, type: 2}
+  - {fileID: 11400000, guid: c4ba06429b3cd47c19c1002581ae4a13, type: 2}
+  - {fileID: 11400000, guid: 964842569885345d3b27b57a5c6376a0, type: 2}
+  - {fileID: 11400000, guid: d8deb042938874097be72aa85fa78f40, type: 2}
+  - {fileID: 11400000, guid: 3488df38992ba4a61b0a60590c413027, type: 2}
+  - {fileID: 11400000, guid: 9381112975c664d80b37fc2568b16781, type: 2}
   initialPieces:
   - X: 0
     Y: 0
-    PieceTemplate: {fileID: 11400000, guid: 1c87f173023bf48ff9b177b8e13cc1b4, type: 2}
+    PieceTemplate: {fileID: 11400000, guid: e7d6eff149b6e4e8abdf2fbc6df520ce, type: 2}
   - X: 0
     Y: 2
-    PieceTemplate: {fileID: 11400000, guid: 595572c15700f4363a0cff7b224ceed9, type: 2}
-  - X: 3
-    Y: 3
-    PieceTemplate: {fileID: 11400000, guid: db56f68d12db648aca524a47b29ea892, type: 2}
+    PieceTemplate: {fileID: 11400000, guid: 0312bcfdc0dc64006bff6c79c5fb22bf, type: 2}
