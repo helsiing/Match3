@@ -9,6 +9,9 @@ namespace VoodooMatch3.Models
 {
     public class PieceTemplate : ScriptableObjectCollectionItem
     {
+        [SerializeField] private int points;
+        public int Points => points;
+        
         [SerializeReference, SubclassSelector]
         private List<PieceTrait> traits = new ();
         public List<PieceTrait> Traits => traits;

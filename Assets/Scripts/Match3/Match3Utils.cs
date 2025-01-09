@@ -131,7 +131,7 @@ namespace VoodooMatch3
             matchesPieces = matchesPieces.Union(verticalMatches).ToList();
             
             IPiece possibleBonusPiece = allPieces[x, y];
-            if (possibleBonusPiece.PieceTemplate.TryGetTrait(out BonusPiece bonusPiece))
+            if (possibleBonusPiece != null && possibleBonusPiece.PieceTemplate.TryGetTrait(out BonusPiece bonusPiece))
             {
                 matchesPieces = matchesPieces.Union(GetPiecesAffectedByBonusPiece(allPieces, width, height, new List<IPiece> {possibleBonusPiece})).ToList();
             }

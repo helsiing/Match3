@@ -16,6 +16,7 @@ namespace VoodooMatch3
         void SetPosition(int x, int y);
         void SetPosition(Vector3 position);
         void Move(int destX, int destY, float moveTime);
+        int GetPoints();
     }
     
     [RequireComponent(typeof(PieceSimulation))]
@@ -25,7 +26,6 @@ namespace VoodooMatch3
         public Vector2Int PositionIndex => positionIndex;
         public GameObject GameObject => gameObject;
 
-        private IBoard board;
         [SerializeField]
         private PieceTemplate pieceTemplate;
         public PieceTemplate PieceTemplate => pieceTemplate;
@@ -44,7 +44,6 @@ namespace VoodooMatch3
 
         public void Init(IBoard board)
         {
-            this.board = board;
             pieceSimulation.Init(board, this);
         }
 
@@ -63,6 +62,11 @@ namespace VoodooMatch3
         public void Move(int destX, int destY, float moveTime)
         {
             pieceSimulation.Move(destX, destY, moveTime);
+        }
+
+        public int GetPoints()
+        {
+            return pieceTemplate.Points;
         }
     }
 }

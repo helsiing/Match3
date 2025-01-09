@@ -1,6 +1,7 @@
 #region
 using System.Collections.Generic;
 using System.Linq;
+using Managers;
 using UnityEngine;
 using VoodooMatch3.Models;
 using VoodooMatch3.Models.Traits;
@@ -11,6 +12,7 @@ namespace VoodooMatch3
 {
     public interface IBoard
     {
+        public ScoreManager ScoreManager { get; }
         public LevelTemplate LevelTemplate { get; }
         public IPiece[,] AllPieces { get; }
         public void ClickTile(GridTile tile);
@@ -33,8 +35,11 @@ namespace VoodooMatch3
     [RequireComponent(typeof(BoardSimulation))]
     public class Board : MonoBehaviour, IBoard
     {
+        public ScoreManager ScoreManager => ScoreManager.Instance;
+        
         [SerializeField] private BoardCamera boardCamera;
         [SerializeField] private LevelTemplate levelTemplate;
+        
         public LevelTemplate LevelTemplate => levelTemplate;
 
         [SerializeField] private Match3Config match3Config;
@@ -236,6 +241,7 @@ namespace VoodooMatch3
             {
                 if (piece != null)
                 {
+                    ScorePoints(piece.GetPoints());
                     DestroyPieceAt(piece.PositionIndex.x, piece.PositionIndex.y);
                 }
             }
@@ -293,6 +299,11 @@ namespace VoodooMatch3
             }
 
             return movingPieces;
+        }
+
+        private void ScorePoints(int value)
+        {
+            ScoreManager.AddScore(value);
         }
     }
 }

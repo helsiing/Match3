@@ -146,8 +146,12 @@ namespace VoodooMatch3
             yield return new WaitForSeconds(.25f);
             bool isFinished = false;
 
+            board.ScoreManager.ResetScoreMultiplier();
+            
             while (!isFinished)
             {
+                board.ScoreManager.IncrementScoreMultiplier();
+                
                 List<IPiece> affectedPiecesByBonus = Match3Utils.GetPiecesAffectedByBonusPiece(board.AllPieces, board.LevelTemplate.Width, board.LevelTemplate.Height, pieces);
                 pieces = pieces.Union(affectedPiecesByBonus).ToList();
                 
@@ -171,6 +175,7 @@ namespace VoodooMatch3
                 }
                 else
                 {
+                    board.ScoreManager.IncrementScoreMultiplier();
                     yield return StartCoroutine(ClearAndCollapseCoroutine(matches));
                 }
             }
