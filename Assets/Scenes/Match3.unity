@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardCamera: {fileID: 519420033}
-  levelTemplate: {fileID: 11400000, guid: 1eb4f68c505e84c2cbacb0dc71a4b237, type: 2}
+  levelTemplate: {fileID: 11400000, guid: 2fda8af0241f1434b945df547731f8ce, type: 2}
   match3Config: {fileID: 11400000, guid: 179b97fe02769594d9555af157004fbb, type: 2}
 --- !u!4 &1465018858
 Transform:

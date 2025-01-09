@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using VoodooMatch3.Models;
 using VoodooMatch3.Models.Traits;
 
 #endregion
@@ -47,9 +48,14 @@ namespace VoodooMatch3
             if(clickedTile != null && targetTile == null && playerInputEnabled)
             {
                 IPiece clickedPiece = board.GetPieceAt(clickedTile.PositionIndex.x, clickedTile.PositionIndex.y);
-                
-                ClearAndRefillBoard(Match3Utils.GetPiecesAffectedByBonusPiece(board.AllPieces,
-                    board.LevelTemplate.Width, board.LevelTemplate.Height, new List<IPiece> { clickedPiece }));
+
+                var affectedPieces = Match3Utils.GetPiecesAffectedByBonusPiece(board.AllPieces,
+                    board.LevelTemplate.Width, board.LevelTemplate.Height, new List<IPiece> {clickedPiece});
+
+                if (affectedPieces.Count > 0)
+                {
+                    ClearAndRefillBoard(affectedPieces);
+                }
                 
                 clickedTile = null;
             }

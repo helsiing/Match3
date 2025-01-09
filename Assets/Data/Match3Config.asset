@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d7b1e636474ffb92b393e3cfa5e42b, type: 3}
   m_Name: Match3Config
   m_EditorClassIdentifier: 
-  swapDuration: 0.3
+  swapDuration: 0.1
   fillOffsetY: 10
   fillMoveTime: 0.5
