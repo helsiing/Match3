@@ -39,7 +39,6 @@ namespace VoodooMatch3.Models
         {
             foreach (PieceTrait trait in traits)
             {
-                Debug.Log(trait);
                 if (!trait.ValidateConfig())
                 {
                     return false;

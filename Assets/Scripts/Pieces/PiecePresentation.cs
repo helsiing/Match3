@@ -28,7 +28,6 @@ namespace VoodooMatch3
                 {
                     if (destroyable.DestroyEffectPrefab != null)
                     {
-                        Debug.Log(destroyable.DestroyEffectPrefab);
                         Instantiate(destroyable.DestroyEffectPrefab, transform.position,
                             Quaternion.identity, transform);
                     }
