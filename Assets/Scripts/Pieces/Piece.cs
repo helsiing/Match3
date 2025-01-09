@@ -16,9 +16,10 @@ namespace VoodooMatch3
         void Init(IBoard board);
         void SetPosition(int x, int y);
         void SetPosition(Vector3 position);
-        void Move(int destX, int destY, float moveTime);
+        void Move(int destX, int destY, float moveTime, bool isMoveCollapsing = false);
         int GetPoints();
         void OnPieceDestroyed();
+        void OnPieceSelected();
     }
     
     [RequireComponent(typeof(PiecePresentation))]
@@ -68,9 +69,13 @@ namespace VoodooMatch3
             transform.rotation = Quaternion.identity;
         }
 
-        public void Move(int destX, int destY, float moveTime)
+        public void Move(int destX, int destY, float moveTime, bool isMoveCollapsing = false)
         {
             pieceSimulation.Move(destX, destY, moveTime);
+            if (isMoveCollapsing)
+            {
+                StartCoroutine(piecePresentation.PlayLandAnimation(moveTime));
+            }
         }
 
         public int GetPoints()
@@ -83,6 +88,14 @@ namespace VoodooMatch3
             if (piecePresentation != null)
             {
                 piecePresentation.PlayDestroyAnimation();
+            }
+        }
+
+        public void OnPieceSelected()
+        {
+            if (piecePresentation != null)
+            {
+                piecePresentation.SelectPiece();
             }
         }
     }

@@ -23,7 +23,7 @@ MonoBehaviour:
   - rid: 3924880680380006413
   - rid: 2092702894086684680
   - rid: 2092702894086684683
-  - rid: 2092702894086684697
+  - rid: 2092702894086684698
   references:
     version: 2
     RefIds:
@@ -34,8 +34,8 @@ MonoBehaviour:
       type: {class: ColorPiece, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
       data:
         Color: {r: 0, g: 0, b: 0, a: 0}
-    - rid: 2092702894086684697
-      type: {class: Movable, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+    - rid: 2092702894086684698
+      type: {class: Destroyable, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
       data: 
     - rid: 3924880680380006413
       type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}

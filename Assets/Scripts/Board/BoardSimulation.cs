@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 using VoodooMatch3.Models.Traits;
 
 #endregion
@@ -62,9 +61,8 @@ namespace VoodooMatch3
             clickedTile = null;
             targetTile = null;
         }
-        
 
-        public void SwitchTiles(GridTile clickedTile, GridTile targetTile)
+        private void SwitchTiles(GridTile clickedTile, GridTile targetTile)
         {
             StartCoroutine(SwitchTilesCoroutine(clickedTile, targetTile));
         }
@@ -135,7 +133,7 @@ namespace VoodooMatch3
 
         private IEnumerator RefillBoardCoroutine()
         {
-            board.FillBoard(10, .3f);
+            board.FillBoard(match3Config.FillOffsetY, match3Config.FillMoveTime);
             yield return null;
         }
 
@@ -159,13 +157,13 @@ namespace VoodooMatch3
                 yield return StartCoroutine(DestroyPieceAt(pieces));
 
                 movingPieces = board.CollapseColumn(pieces);
-
+                
                 while (!Match3Utils.ArePiecesStillCollapsing(movingPieces))
                 {
                     yield return null;
                 }
 
-                yield return new WaitForSeconds(.25f);
+                //yield return new WaitForSeconds(.25f);
 
                 matches = board.FindMatchesAt(movingPieces);
                 if (matches.Count == 0)

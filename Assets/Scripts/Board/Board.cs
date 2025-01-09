@@ -152,7 +152,7 @@ namespace VoodooMatch3
                     if (falseYOffset != 0)
                     {
                         piece.SetPosition(new Vector3(x, y + falseYOffset, 0f));
-                        piece.Move(x, y, moveTime);
+                        piece.Move(x, y, moveTime, true);
                     }
                     
                     piece.SetParent(transform);
@@ -249,7 +249,7 @@ namespace VoodooMatch3
                     {
                         if (allPieces[columnIndex, j] != null)
                         {
-                            allPieces[columnIndex, j].Move(columnIndex, i, collapseDuration * (j - i));
+                            allPieces[columnIndex, j].Move(columnIndex, i, collapseDuration * (j - i), true);
                             allPieces[columnIndex, i] = allPieces[columnIndex, j];
                             allPieces[columnIndex, i].SetPosition(columnIndex, i);
 
