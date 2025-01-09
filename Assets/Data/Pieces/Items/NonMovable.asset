@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05cb207343be8cc4c889cc92fb56aef7, type: 3}
-  m_Name: StaticPiece
+  m_Name: NonMovable
   m_EditorClassIdentifier: 
   guid:
     value1: 4853506217459563465

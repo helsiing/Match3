@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace VoodooMatch3.Models.Traits
 {
@@ -8,5 +9,8 @@ namespace VoodooMatch3.Models.Traits
     [Serializable]
     public class Destroyable : PieceTrait
     {
+        [SerializeField]
+        private GameObject destroyEffectPrefab;
+        public GameObject DestroyEffectPrefab => destroyEffectPrefab;
     }
 }

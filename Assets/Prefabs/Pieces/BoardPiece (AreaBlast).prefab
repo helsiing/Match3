@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2086914166910276361, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: m_Name
-      value: BoardPiece_AreaBlast
+      value: BoardPiece (AreaBlast)
       objectReference: {fileID: 0}
     - target: {fileID: 4025138749313130814, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       propertyPath: pieceTemplate
@@ -62,7 +62,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4350972391386495782, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7266215077810478081}
+      addedObject: {fileID: 6160495044913649486}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
 --- !u!4 &758019073688759541 stripped
@@ -70,7 +70,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4350972391386495782, guid: 109eb9be978c0dc4b994a89e0fafa93b, type: 3}
   m_PrefabInstance: {fileID: 3955501888764368851}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7273295186751923760
+--- !u!1001 &6144984567736626559
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -120,27 +120,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5409101133970419963, guid: 79d9b347dc96e5c4182f504621f68415, type: 3}
       propertyPath: m_Name
-      value: Bomb_Green
-      objectReference: {fileID: 0}
-    - target: {fileID: 7073384104012267019, guid: 79d9b347dc96e5c4182f504621f68415, type: 3}
-      propertyPath: m_Color.b
-      value: 0.06581525
-      objectReference: {fileID: 0}
-    - target: {fileID: 7073384104012267019, guid: 79d9b347dc96e5c4182f504621f68415, type: 3}
-      propertyPath: m_Color.g
-      value: 0.06581525
-      objectReference: {fileID: 0}
-    - target: {fileID: 7073384104012267019, guid: 79d9b347dc96e5c4182f504621f68415, type: 3}
-      propertyPath: m_Color.r
-      value: 0.16037738
+      value: Bomb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79d9b347dc96e5c4182f504621f68415, type: 3}
---- !u!4 &7266215077810478081 stripped
+--- !u!4 &6160495044913649486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 16087447181146673, guid: 79d9b347dc96e5c4182f504621f68415, type: 3}
-  m_PrefabInstance: {fileID: 7273295186751923760}
+  m_PrefabInstance: {fileID: 6144984567736626559}
   m_PrefabAsset: {fileID: 0}

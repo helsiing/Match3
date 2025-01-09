@@ -189,7 +189,7 @@ namespace VoodooMatch3
                 piece.OnPieceDestroyed();
             }
 
-            yield return new WaitForSeconds(.25f);
+            yield return new WaitForSeconds(.4f);
             
             foreach (IPiece piece in destroyablePieces.Where(piece => piece != null))
             {

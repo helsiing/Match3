@@ -36,7 +36,8 @@ MonoBehaviour:
         Color: {r: 0, g: 0, b: 0, a: 0}
     - rid: 2092702894086684696
       type: {class: Destroyable, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
-      data: 
+      data:
+        destroyEffectPrefab: {fileID: 5748859318760806791, guid: 7219e9740ef160b43a4ea78f0a3e4674, type: 3}
     - rid: 3924880680380006409
       type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
       data:

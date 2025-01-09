@@ -54,6 +54,7 @@ namespace VoodooMatch3
         public void Init(IBoard board)
         {
             pieceSimulation.Init(board, this);
+            piecePresentation.Init(this);
         }
 
         public void SetPosition(int x, int y)

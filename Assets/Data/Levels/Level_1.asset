@@ -36,6 +36,3 @@ MonoBehaviour:
   - X: 0
     Y: 2
     PieceTemplate: {fileID: 11400000, guid: 595572c15700f4363a0cff7b224ceed9, type: 2}
-  - X: 3
-    Y: 3
-    PieceTemplate: {fileID: 11400000, guid: a81c81f886094a54d9a3bb29c93833bd, type: 2}
