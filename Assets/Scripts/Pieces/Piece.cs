@@ -49,6 +49,7 @@ namespace VoodooMatch3
 
         public void SetPosition(int x, int y)
         {
+            gameObject.name = $"{pieceTemplate.name} ({x}, {y})";
             positionIndex.x = x;
             positionIndex.y = y;
         }

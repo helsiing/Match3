@@ -21,9 +21,13 @@ namespace VoodooMatch3.Models
         [SerializeField] private int width = 7;
         public int Width => width;
 
-        [SerializeField] public int height = 7;
+        [SerializeField] private int height = 7;
         public int Height => height;
 
+        
+        [SerializeField] private int scoreToWin = 100;
+        public int ScoreToWin => scoreToWin;
+        
         [SerializeField] public GameObject tilePrefab;
         public GameObject TilePrefab => tilePrefab;
 

@@ -45,8 +45,8 @@ namespace VoodooMatch3
                 {
                     GameObject pieceGameObject = Instantiate(boardObject.Prefab,
                         new Vector3(initialPiece.X, initialPiece.Y, 0f), Quaternion.identity);
-                    pieceGameObject.name = $"Piece ({initialPiece.X}, {initialPiece.Y})";
-                    board.SetPieceAt(pieceGameObject, initialPiece.PieceTemplate, initialPiece.X, initialPiece.Y,
+                    pieceGameObject.name = $"{initialPiece.PieceTemplate.name} ({initialPiece.X}, {initialPiece.Y})";
+                    board.SetPieceAt(pieceGameObject, initialPiece.X, initialPiece.Y,
                         match3Config.FillOffsetY, match3Config.FillMoveTime);
                 }
             }

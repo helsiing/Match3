@@ -27,8 +27,7 @@ namespace VoodooMatch3
         public void DestroyPieceAt(List<IPiece> pieces);
         public List<IPiece> CollapseColumn(List<IPiece> piece);
 
-        public Piece SetPieceAt(GameObject randomPiece,
-            PieceTemplate randomPieceTemplate, int x, int y, int falseYOffset, float moveTime);
+        public IPiece SetPieceAt(GameObject randomPiece, int x, int y, int falseYOffset, float moveTime);
     }
     
     [RequireComponent(typeof(BoardPresentation))]
@@ -71,6 +70,8 @@ namespace VoodooMatch3
             boardPresentation.SetupInitialPieces();
             
             FillBoard(match3Config.FillOffsetY, match3Config.FillMoveTime);
+            
+            ScoreManager.Init(levelTemplate.ScoreToWin);
         }
         
         public IPiece GetPieceAt(int x, int y)
@@ -88,7 +89,7 @@ namespace VoodooMatch3
             if (piece != null)
             {
                 piece.SetPosition(new Vector3(x, y, 0));
-                if (Match3Utils.IsWithinBounds(levelTemplate.Width, levelTemplate.height, x, y))
+                if (Match3Utils.IsWithinBounds(levelTemplate.Width, levelTemplate.Height, x, y))
                 {
                     allPieces[x, y] = piece;
                 }
@@ -108,7 +109,7 @@ namespace VoodooMatch3
                 {
                     if (allPieces[i, j] == null)
                     {
-                        Piece piece = FillRandomAt(i, j, falseYOffset, moveTime);
+                        IPiece piece = FillRandomAt(i, j, falseYOffset, moveTime);
                         iterations = 0;
 
                         while (HasMatchOnFill(i, j) && iterations < maxIterations)
@@ -122,7 +123,7 @@ namespace VoodooMatch3
             }
         }
 
-        private Piece FillRandomAt(int x, int y, int falseYOffset = 0, float moveTime = 0.1f)
+        private IPiece FillRandomAt(int x, int y, int falseYOffset = 0, float moveTime = 0.1f)
         {
             PieceTemplate randomPieceTemplate = levelTemplate.GetRandomColorPieceTemplate();
 
@@ -131,18 +132,17 @@ namespace VoodooMatch3
                 GameObject randomPiece =
                     Instantiate(boardObject.Prefab, new Vector3(x, y, 0f), Quaternion.identity);
 
-                return SetPieceAt(randomPiece, randomPieceTemplate, x, y, falseYOffset, moveTime);
+                return SetPieceAt(randomPiece, x, y, falseYOffset, moveTime);
             }
 
             return null;
         }
 
-        public Piece SetPieceAt(GameObject pieceGameObject,
-            PieceTemplate pieceTemplate, int x, int y, int falseYOffset, float moveTime)
+        public IPiece SetPieceAt(GameObject pieceGameObject, int x, int y, int falseYOffset, float moveTime)
         {
             if (pieceGameObject != null)
             {
-                Piece piece = pieceGameObject.GetComponent<Piece>();
+                IPiece piece = pieceGameObject.GetComponent<IPiece>();
                 if (piece != null)
                 {
                     piece.Init(this);
@@ -150,12 +150,11 @@ namespace VoodooMatch3
 
                     if (falseYOffset != 0)
                     {
-                        piece.transform.position = new Vector3(x, y + falseYOffset, 0f);
+                        piece.SetPosition(new Vector3(x, y + falseYOffset, 0f));
                         piece.Move(x, y, moveTime);
                     }
-
-                    piece.name = $"{pieceTemplate.name} ({x}, {y})";
-                    piece.transform.parent = transform;
+                    
+                    piece.SetParent(transform);
                     return piece;
                 }
             }
@@ -198,7 +197,7 @@ namespace VoodooMatch3
         private List<IPiece> FindMatches(int startPositionX, int startPositionY, Vector2 searchDirection,
             int minLenght = 3)
         {
-            return Match3Utils.FindMatches(allPieces, levelTemplate.Width, levelTemplate.height, startPositionX,
+            return Match3Utils.FindMatches(allPieces, levelTemplate.Width, levelTemplate.Height, startPositionX,
                 startPositionY, searchDirection, minLenght);
         }
         

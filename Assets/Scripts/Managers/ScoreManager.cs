@@ -10,6 +10,7 @@ namespace Managers
         private int counterValue = 0;
 
         private int scoreMultiplier = 1;
+        private int scoreToWin;
         
         [SerializeField]
         private int increment;
@@ -17,15 +18,26 @@ namespace Managers
         [SerializeField]
         private ScorePanelUI scorePanelUI;
 
-        private void Start()
+        public void Init(int scoreToWin)
         {
-            scorePanelUI.SetScoreText(currentScore);
+            this.scoreToWin = scoreToWin;
+            scorePanelUI.SetCurrentScoreText(currentScore);
+            scorePanelUI.SetScoreToWinText(scoreToWin);
         }
 
         public void AddScore(int value)
         {
-            currentScore += value * scoreMultiplier;
-            StartCoroutine(CountScoreRoutine());
+            
+            if(currentScore + value > scoreToWin)
+            {
+                currentScore = scoreToWin;
+                Debug.Log("WIN GAME");
+            }
+            else
+            {
+                currentScore += value * scoreMultiplier;
+                StartCoroutine(CountScoreRoutine());
+            }
         }
         
         public void ResetScoreMultiplier()
@@ -45,13 +57,13 @@ namespace Managers
             while (counterValue < currentScore && iterations < 10000)
             {
                 counterValue += increment;
-                scorePanelUI.SetScoreText(counterValue);
+                scorePanelUI.SetCurrentScoreText(counterValue);
                 iterations++;
                 yield return new WaitForSeconds(0.1f);
             }
             
             counterValue = currentScore;
-            scorePanelUI.SetScoreText(currentScore);
+            scorePanelUI.SetCurrentScoreText(currentScore);
         }
     }
 }
