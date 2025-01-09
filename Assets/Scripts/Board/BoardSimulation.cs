@@ -76,7 +76,8 @@ namespace VoodooMatch3
                 IPiece clickedPiece = board.GetPieceAt(clickedTile.PositionIndex.x, clickedTile.PositionIndex.y);
                 IPiece targetPiece = board.GetPieceAt(targetTile.PositionIndex.x, targetTile.PositionIndex.y);
 
-                if (targetPiece != null && clickedPiece != null)
+                if (targetPiece != null && targetPiece.PieceTemplate.HasTrait<Movable>() 
+                    && clickedPiece != null && clickedPiece.PieceTemplate.HasTrait<Movable>())
                 {
                     clickedPiece.Move(targetTile.PositionIndex.x, targetTile.PositionIndex.y,
                         match3Config.SwapDuration);
@@ -155,7 +156,7 @@ namespace VoodooMatch3
                 List<IPiece> affectedPiecesByBonus = Match3Utils.GetPiecesAffectedByBonusPiece(board.AllPieces, board.LevelTemplate.Width, board.LevelTemplate.Height, pieces);
                 pieces = pieces.Union(affectedPiecesByBonus).ToList();
                 
-                board.DestroyPieceAt(pieces);
+                DestroyPieceAt(pieces);
                 yield return new WaitForSeconds(.25f);
 
                 movingPieces = board.CollapseColumn(pieces);
@@ -181,6 +182,28 @@ namespace VoodooMatch3
             }
 
             yield return null;
+        }
+        
+        public void DestroyPieceAt(List<IPiece> pieces)
+        {
+            foreach (IPiece piece in pieces)
+            {
+                if (piece != null && piece.PieceTemplate.HasTrait<Destroyable>())
+                {
+                    board.ScorePoints(piece.GetPoints());
+                    DestroyPieceAt(piece.PositionIndex.x, piece.PositionIndex.y);
+                }
+            }
+        }
+        
+        public void DestroyPieceAt(int x, int y)
+        {
+            IPiece pieceToDestroy = board.GetPieceAt(x, y);
+            if (pieceToDestroy != null)
+            {
+                board.SetEmptyPieceAt(x, y);
+                Destroy(pieceToDestroy.GameObject);
+            }
         }
     }
 }

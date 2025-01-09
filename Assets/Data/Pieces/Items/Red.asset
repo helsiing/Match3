@@ -21,9 +21,22 @@ MonoBehaviour:
   points: 10
   traits:
   - rid: 3924880680380006410
+  - rid: 2092702894086684673
+  - rid: 2092702894086684685
+  - rid: 2092702894086684694
   references:
     version: 2
     RefIds:
+    - rid: 2092702894086684673
+      type: {class: Movable, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+      data: 
+    - rid: 2092702894086684685
+      type: {class: ColorPiece, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+      data:
+        Color: {r: 0, g: 0, b: 0, a: 0}
+    - rid: 2092702894086684694
+      type: {class: Destroyable, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+      data: 
     - rid: 3924880680380006410
       type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
       data:

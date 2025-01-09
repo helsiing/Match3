@@ -24,10 +24,11 @@ namespace VoodooMatch3
         public List<IPiece> FindMatchesAt(List<IPiece> pieces, int minLenght = 3);
         public List<IPiece> FindAllMatches();
         public void FillBoard(int falseYOffset = 0, float moveTime = 0.1f);
-        public void DestroyPieceAt(List<IPiece> pieces);
         public List<IPiece> CollapseColumn(List<IPiece> piece);
 
         public IPiece SetPieceAt(GameObject randomPiece, int x, int y, int falseYOffset, float moveTime);
+        public void ScorePoints(int value);
+        public void SetEmptyPieceAt(int x, int y);
     }
     
     [RequireComponent(typeof(BoardPresentation))]
@@ -114,7 +115,7 @@ namespace VoodooMatch3
 
                         while (HasMatchOnFill(i, j) && iterations < maxIterations)
                         {
-                            DestroyPieceAt(i, j);
+                            boardSimulation.DestroyPieceAt(i, j);
                             piece = FillRandomAt(i, j, falseYOffset, moveTime);
                             iterations++;
                         }
@@ -224,27 +225,7 @@ namespace VoodooMatch3
             return combinedMatches;
         }
 
-        private void DestroyPieceAt(int x, int y)
-        {
-            IPiece pieceToDestroy = allPieces[x, y];
-            if (pieceToDestroy != null)
-            {
-                allPieces[x, y] = null;
-                Destroy(pieceToDestroy.GameObject);
-            }
-        }
-
-        public void DestroyPieceAt(List<IPiece> pieces)
-        {
-            foreach (IPiece piece in pieces)
-            {
-                if (piece != null)
-                {
-                    ScorePoints(piece.GetPoints());
-                    DestroyPieceAt(piece.PositionIndex.x, piece.PositionIndex.y);
-                }
-            }
-        }
+        
 
         public void ClearBoard()
         {
@@ -252,7 +233,7 @@ namespace VoodooMatch3
             {
                 for (int j = 0; j < levelTemplate.Height; j++)
                 {
-                    DestroyPieceAt(i, j);
+                    boardSimulation.DestroyPieceAt(i, j);
                 }
             }
         }
@@ -300,9 +281,17 @@ namespace VoodooMatch3
             return movingPieces;
         }
 
-        private void ScorePoints(int value)
+        public void ScorePoints(int value)
         {
             ScoreManager.AddScore(value);
+        }
+
+        public void SetEmptyPieceAt(int x, int y)
+        {
+            if (Match3Utils.IsWithinBounds(levelTemplate.Width, levelTemplate.Height, x, y))
+            {
+                allPieces[x, y] = null;
+            }
         }
     }
 }

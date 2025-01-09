@@ -21,15 +21,23 @@ MonoBehaviour:
   points: 50
   traits:
   - rid: 3924880680380006407
-  - rid: 3924880680380006415
+  - rid: 2092702894086684674
+  - rid: 2092702894086684682
+  - rid: 2092702894086684692
   references:
     version: 2
     RefIds:
+    - rid: 2092702894086684674
+      type: {class: Movable, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+      data: 
+    - rid: 2092702894086684682
+      type: {class: BonusPiece, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+      data:
+        bonusPieceType: 2
+    - rid: 2092702894086684692
+      type: {class: Destroyable, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+      data: 
     - rid: 3924880680380006407
       type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
       data:
         prefab: {fileID: 3031750902504817882, guid: 6ac1634dabc0ef1469b228ff1695b678, type: 3}
-    - rid: 3924880680380006415
-      type: {class: BonusPiece, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
-      data:
-        bonusPieceType: 2
