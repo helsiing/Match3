@@ -44,7 +44,7 @@ namespace VoodooMatch3
 
         public void ReleaseTile()
         {
-            if(clickedTile != null && targetTile == null)
+            if(clickedTile != null && targetTile == null && playerInputEnabled)
             {
                 IPiece clickedPiece = board.GetPieceAt(clickedTile.PositionIndex.x, clickedTile.PositionIndex.y);
                 

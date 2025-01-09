@@ -14,8 +14,37 @@ namespace VoodooMatch3
             int minLenght = 3)
         {
             List<IPiece> matches = new List<IPiece>();
-            IPiece startPiece = null;
+            
+            List<IPiece> simpleMatches = FindSimpleMatches(allPieces, width, height, startPositionX, startPositionY, searchDirection, minLenght);
+            if (simpleMatches != null && simpleMatches.Count > 0)
+            {
+                matches = matches.Union(simpleMatches).ToList();
+            }
 
+            /*List<IPiece> twoByTwoMatches = new List<IPiece>();
+            // Check for 2x2 matches
+            for (int x = 0; x < width - 1; x++)
+            {
+                for (int y = 0; y < height - 1; y++)
+                {
+                    List<IPiece> possibleTwoByTwoMatch = FindTwoByTwoMatches(allPieces, x, y);
+                    if(possibleTwoByTwoMatch != null && possibleTwoByTwoMatch.Count > 0)
+                    {
+                        twoByTwoMatches = twoByTwoMatches.Union(possibleTwoByTwoMatch).ToList();
+                    }
+                }
+            }
+            matches = matches.Union(twoByTwoMatches).ToList();*/
+            
+            
+            return matches;
+        }
+
+        private static List<IPiece> FindSimpleMatches(IPiece[,] allPieces, int width, int height, int startPositionX, int startPositionY, Vector2 searchDirection,
+            int minLenght = 3)
+        {
+            IPiece startPiece = null;
+            List<IPiece> matches = new List<IPiece>();
             if (IsWithinBounds(width, height, startPositionX, startPositionY))
             {
                 startPiece = allPieces[startPositionX, startPositionY];
@@ -70,6 +99,31 @@ namespace VoodooMatch3
             }
 
             return matches.Count >= minLenght ? matches : null;
+        }
+        
+        private static List<IPiece> FindTwoByTwoMatches(IPiece[,] allPieces, int x, int y)
+        {
+            if (allPieces[x, y] == null || allPieces[x + 1, y] == null || 
+                allPieces[x, y + 1] == null || allPieces[x + 1, y + 1] == null)
+            {
+                return null;
+            }
+
+            var basePiece = allPieces[x, y];
+            if (allPieces[x + 1, y].PieceTemplate == basePiece.PieceTemplate &&
+                allPieces[x, y + 1].PieceTemplate == basePiece.PieceTemplate &&
+                allPieces[x + 1, y + 1].PieceTemplate == basePiece.PieceTemplate)
+            {
+                return new List<IPiece>
+                {
+                    basePiece,
+                    allPieces[x + 1, y],
+                    allPieces[x, y + 1],
+                    allPieces[x + 1, y + 1]
+                };
+            }
+
+            return null;
         }
 
         private static List<IPiece> FindVerticalMatches(IPiece[,] allPieces, int width, int height, int startPositionX, int startPositionY, int minLenght = 3)

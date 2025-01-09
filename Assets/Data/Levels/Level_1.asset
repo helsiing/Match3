@@ -26,7 +26,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c87f173023bf48ff9b177b8e13cc1b4, type: 2}
   - {fileID: 11400000, guid: ad33bd55a342f46e99ea96aaf573f254, type: 2}
   - {fileID: 11400000, guid: 595572c15700f4363a0cff7b224ceed9, type: 2}
-  - {fileID: 11400000, guid: becad9a7fada8430280272806108e733, type: 2}
   initialPieces:
   - X: 0
     Y: 0
@@ -37,3 +36,6 @@ MonoBehaviour:
   - X: 0
     Y: 2
     PieceTemplate: {fileID: 11400000, guid: 595572c15700f4363a0cff7b224ceed9, type: 2}
+  - X: 3
+    Y: 3
+    PieceTemplate: {fileID: 11400000, guid: a81c81f886094a54d9a3bb29c93833bd, type: 2}
