@@ -20,7 +20,7 @@ namespace Managers
         {
             if (scoreText != null)
             {
-                scoreToWinText.text = $"({scoreToWinValue.ToString()})";
+                scoreToWinText.text = $"(Goal: {scoreToWinValue.ToString()})";
             }
         }
     }

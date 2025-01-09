@@ -11,5 +11,10 @@ namespace VoodooMatch3.Models.Traits
     {
         [SerializeField] private GameObject prefab;
         public GameObject Prefab => prefab;
+        
+        public override bool ValidateConfig()
+        {
+            return prefab != null;
+        }
     }
 }

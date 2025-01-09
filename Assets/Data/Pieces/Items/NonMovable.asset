@@ -20,11 +20,16 @@ MonoBehaviour:
     value2: -3775496012834046582
   points: 100
   traits:
-  - rid: 3924880680380006408
+  - rid: 2092702894086684728
+  - rid: 2092702894086684729
   references:
     version: 2
     RefIds:
-    - rid: 3924880680380006408
-      type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+    - rid: 2092702894086684728
+      type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: VoodooMatch3}
       data:
         prefab: {fileID: 1404223659157920435, guid: 5da8388de956d0d4ebfa877a77a8f623, type: 3}
+    - rid: 2092702894086684729
+      type: {class: UiObject, ns: VoodooMatch3.Models.Traits, asm: VoodooMatch3}
+      data:
+        sprite: {fileID: 21300000, guid: cb66485cf8cc4c34a9d0d7673fd1e442, type: 3}

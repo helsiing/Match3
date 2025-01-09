@@ -12,5 +12,10 @@ namespace VoodooMatch3.Models.Traits
         [SerializeField]
         private GameObject destroyEffectPrefab;
         public GameObject DestroyEffectPrefab => destroyEffectPrefab;
+        
+        public override bool ValidateConfig()
+        {
+            return destroyEffectPrefab != null;
+        }
     }
 }

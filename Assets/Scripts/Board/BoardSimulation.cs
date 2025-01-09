@@ -148,7 +148,6 @@ namespace VoodooMatch3
             List<IPiece> movingPieces = new List<IPiece>();
             List<IPiece> matches = new List<IPiece>();
 
-            yield return new WaitForSeconds(.25f);
             bool isFinished = false;
 
             board.ScoreManager.ResetScoreMultiplier();

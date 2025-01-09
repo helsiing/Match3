@@ -16,13 +16,13 @@ namespace VoodooMatch3.UI
         {
             gridRoot.gameObject.DestroyChildObjects();
             
-            foreach (var level in levels)
+            foreach (LevelTemplate levelTemplate in levels)
             {
                 GameObject levelPanelGameObject = Instantiate(levelPanelPrefab, gridRoot);
                 LevelPanelUI levelPanelUI = levelPanelGameObject.GetComponent<LevelPanelUI>();
                 Assert.IsNotNull(levelPanelUI, "levelPanelUI != null");
                 
-                levelPanelUI.Init(level);
+                levelPanelUI.SetContent(levelTemplate);
                 
             }
         }

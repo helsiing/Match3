@@ -34,5 +34,19 @@ namespace VoodooMatch3.Models
         {
             return TryGetTrait(out T _);
         }
+
+        public bool ValidateConfig()
+        {
+            foreach (PieceTrait trait in traits)
+            {
+                Debug.Log(trait);
+                if (!trait.ValidateConfig())
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

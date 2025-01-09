@@ -10,5 +10,10 @@ namespace VoodooMatch3.Models.Traits
     public class ColorPiece : PieceTrait
     {
         public Color Color;
+        
+        public override bool ValidateConfig()
+        {
+            return true;
+        }
     }
 }   

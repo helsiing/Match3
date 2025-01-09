@@ -24,12 +24,14 @@ MonoBehaviour:
   - rid: 2092702894086684678
   - rid: 2092702894086684681
   - rid: 2092702894086684689
+  - rid: 2092702894086684699
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 2092702894086684678
       type: {class: Movable, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
-      data: 
     - rid: 2092702894086684681
       type: {class: BonusPiece, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
       data:
@@ -38,6 +40,10 @@ MonoBehaviour:
       type: {class: Destroyable, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
       data:
         destroyEffectPrefab: {fileID: 6105867572354172122, guid: fc64d2b466e233341b4b9452f1e2a675, type: 3}
+    - rid: 2092702894086684699
+      type: {class: UiObject, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
+      data:
+        sprite: {fileID: 21300022, guid: 3ede0a227ddcb1e49bd350c390c96d2a, type: 3}
     - rid: 3924880680380006408
       type: {class: BoardObject, ns: VoodooMatch3.Models.Traits, asm: Assembly-CSharp}
       data:

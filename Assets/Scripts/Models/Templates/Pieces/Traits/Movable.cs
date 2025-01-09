@@ -8,5 +8,9 @@ namespace VoodooMatch3.Models.Traits
     [Serializable]
     public class Movable : PieceTrait
     {
+        public override bool ValidateConfig()
+        {
+            return true;
+        }
     }
 }

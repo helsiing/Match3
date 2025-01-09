@@ -20,5 +20,10 @@ namespace VoodooMatch3.Models.Traits
         [SerializeField]
         private BonusPieceType bonusPieceType;
         public BonusPieceType BonusPieceType => bonusPieceType;
+        
+        public override bool ValidateConfig()
+        {
+            return bonusPieceType != BonusPieceType.None;
+        }
     }
 }
