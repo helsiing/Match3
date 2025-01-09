@@ -156,8 +156,7 @@ namespace VoodooMatch3
                 List<IPiece> affectedPiecesByBonus = Match3Utils.GetPiecesAffectedByBonusPiece(board.AllPieces, board.LevelTemplate.Width, board.LevelTemplate.Height, pieces);
                 pieces = pieces.Union(affectedPiecesByBonus).ToList();
                 
-                DestroyPieceAt(pieces);
-                yield return new WaitForSeconds(.25f);
+                yield return StartCoroutine(DestroyPieceAt(pieces));
 
                 movingPieces = board.CollapseColumn(pieces);
 
@@ -184,16 +183,23 @@ namespace VoodooMatch3
             yield return null;
         }
         
-        public void DestroyPieceAt(List<IPiece> pieces)
+        private IEnumerator DestroyPieceAt(List<IPiece> pieces)
         {
-            foreach (IPiece piece in pieces)
+            List<IPiece> destroyablePieces = pieces.Where(piece => piece != null && piece.PieceTemplate.HasTrait<Destroyable>()).ToList();
+            foreach (IPiece piece in destroyablePieces.Where(piece => piece != null))
             {
-                if (piece != null && piece.PieceTemplate.HasTrait<Destroyable>())
-                {
-                    board.ScorePoints(piece.GetPoints());
-                    DestroyPieceAt(piece.PositionIndex.x, piece.PositionIndex.y);
-                }
+                piece.OnPieceDestroyed();
             }
+
+            yield return new WaitForSeconds(.25f);
+            
+            foreach (IPiece piece in destroyablePieces.Where(piece => piece != null))
+            {
+                board.ScorePoints(piece.GetPoints());
+                DestroyPieceAt(piece.PositionIndex.x, piece.PositionIndex.y);
+            }
+
+            yield return null;
         }
         
         public void DestroyPieceAt(int x, int y)

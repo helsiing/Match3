@@ -1,5 +1,7 @@
 #region
+using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 using VoodooMatch3.Models;
 #endregion
 
@@ -11,14 +13,15 @@ namespace VoodooMatch3
         PieceTemplate PieceTemplate { get; }
         GameObject GameObject { get; }
         void SetParent(Transform parent);
-        
         void Init(IBoard board);
         void SetPosition(int x, int y);
         void SetPosition(Vector3 position);
         void Move(int destX, int destY, float moveTime);
         int GetPoints();
+        void OnPieceDestroyed();
     }
     
+    [RequireComponent(typeof(PiecePresentation))]
     [RequireComponent(typeof(PieceSimulation))]
     public class Piece : MonoBehaviour, IPiece
     {
@@ -30,11 +33,16 @@ namespace VoodooMatch3
         private PieceTemplate pieceTemplate;
         public PieceTemplate PieceTemplate => pieceTemplate;
 
+        private PiecePresentation piecePresentation;
         private PieceSimulation pieceSimulation;
 
         private void Awake()
         {
             pieceSimulation = GetComponent<PieceSimulation>();
+            Assert.IsNotNull(pieceSimulation, "pieceSimulation != null");
+            
+            piecePresentation = GetComponent<PiecePresentation>();
+            Assert.IsNotNull(piecePresentation, "piecePresentation != null");
         }
 
         public void SetParent(Transform parent)
@@ -68,6 +76,14 @@ namespace VoodooMatch3
         public int GetPoints()
         {
             return pieceTemplate.Points;
+        }
+
+        public void OnPieceDestroyed()
+        {
+            if (piecePresentation != null)
+            {
+                piecePresentation.PlayDestroyAnimation();
+            }
         }
     }
 }
