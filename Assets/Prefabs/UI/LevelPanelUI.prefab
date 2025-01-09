@@ -197,6 +197,7 @@ MonoBehaviour:
   timeToWin: {fileID: 5066696136912790237}
   availablePiecesRoot: {fileID: 8441885146412038464}
   availablePiecePrefab: {fileID: 1685230321489209415, guid: 2d9365b5d3fa9ed4b91750a9478a0414, type: 3}
+  startButton: {fileID: 3249695676356402950}
 --- !u!1 &446841085908305504
 GameObject:
   m_ObjectHideFlags: 0

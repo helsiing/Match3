@@ -59,6 +59,17 @@ namespace VoodooMatch3
 
         public void Start()
         {
+            //LoadLevel(levelTemplate);
+            GameManager.Instance.LoadLevel += OnLoadLevel;
+        }
+
+        private void OnLoadLevel(LevelTemplate levelTemplate)
+        {
+            LoadLevel(levelTemplate);
+        }
+
+        private void LoadLevel(LevelTemplate levelTemplate)
+        {
             allTiles = new GridTile[levelTemplate.Width, levelTemplate.Height];
             allPieces = new IPiece[levelTemplate.Width, levelTemplate.Height];
 
@@ -67,6 +78,7 @@ namespace VoodooMatch3
             
             boardCamera.SetupCamera(levelTemplate.Width, levelTemplate.Height);
 
+            ClearBoard();
             boardPresentation.SetupTiles();
             boardPresentation.SetupInitialPieces();
             
@@ -74,7 +86,7 @@ namespace VoodooMatch3
             
             ScoreManager.Init(levelTemplate.ScoreToWin);
         }
-        
+
         public IPiece GetPieceAt(int x, int y)
         {
             return allPieces[x, y];
@@ -130,9 +142,7 @@ namespace VoodooMatch3
 
             if (randomPieceTemplate.TryGetTrait(out BoardObject boardObject))
             {
-                GameObject randomPiece =
-                    Instantiate(boardObject.Prefab, new Vector3(x, y, 0f), Quaternion.identity);
-
+                GameObject randomPiece = boardPresentation.SetPieceAt(boardObject.Prefab, x, y);
                 return SetPieceAt(randomPiece, x, y, falseYOffset, moveTime);
             }
 
@@ -155,7 +165,7 @@ namespace VoodooMatch3
                         piece.Move(x, y, moveTime, true);
                     }
                     
-                    piece.SetParent(transform);
+                    //piece.SetParent(transform);
                     return piece;
                 }
             }
@@ -236,6 +246,7 @@ namespace VoodooMatch3
                     boardSimulation.DestroyPieceAt(i, j);
                 }
             }
+            boardPresentation.ClearBoard();
         }
 
         private List<IPiece> CollapseColumn(int columnIndex, float collapseDuration = 0.1f)

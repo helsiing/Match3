@@ -21,7 +21,7 @@ namespace VoodooMatch3
                 matches = matches.Union(simpleMatches).ToList();
             }
 
-            List<IPiece> twoByTwoMatches = new List<IPiece>();
+            /*List<IPiece> twoByTwoMatches = new List<IPiece>();
             // Check for 2x2 matches
             for (int x = 0; x < width - 1; x++)
             {
@@ -34,7 +34,7 @@ namespace VoodooMatch3
                     }
                 }
             }
-            matches = matches.Union(twoByTwoMatches).ToList();
+            matches = matches.Union(twoByTwoMatches).ToList();*/
             
             
             return matches;

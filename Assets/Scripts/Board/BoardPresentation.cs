@@ -2,6 +2,7 @@
 using UnityEngine;
 using VoodooMatch3.Models;
 using VoodooMatch3.Models.Traits;
+using VoodooMatch3.Utils;
 
 #endregion
 
@@ -9,10 +10,13 @@ namespace VoodooMatch3
 {
     public class BoardPresentation : MonoBehaviour
     {
+        [SerializeField] private Transform tileGridRoot;
+        [SerializeField] private Transform piecesGridRoot;
+        
         private IBoard board;
         private LevelTemplate levelTemplate;
         private Match3Config match3Config;
-        
+       
         public void Init(IBoard board, LevelTemplate levelTemplate, Match3Config match3Config)
         {
             this.board = board;
@@ -27,10 +31,9 @@ namespace VoodooMatch3
                 for (int j = 0; j < levelTemplate.Height; j++)
                 {
                     GameObject tileGameObject = Instantiate(levelTemplate.TilePrefab, new Vector3(i, j, 0f),
-                        Quaternion.identity);
+                        Quaternion.identity, tileGridRoot);
                     tileGameObject.name = $"Tile ({i}, {j})";
                     var gridTile = tileGameObject.GetComponent<GridTile>();
-                    gridTile.transform.parent = transform;
                     gridTile.Init(board, new Vector2Int(i, j));
                     board.SetGridPieceAt(i, j, gridTile);
                 }
@@ -44,12 +47,23 @@ namespace VoodooMatch3
                 if (initialPiece.PieceTemplate.TryGetTrait(out BoardObject boardObject))
                 {
                     GameObject pieceGameObject = Instantiate(boardObject.Prefab,
-                        new Vector3(initialPiece.X, initialPiece.Y, 0f), Quaternion.identity);
+                        new Vector3(initialPiece.X, initialPiece.Y, 0f), Quaternion.identity, piecesGridRoot);
                     pieceGameObject.name = $"{initialPiece.PieceTemplate.name} ({initialPiece.X}, {initialPiece.Y})";
                     board.SetPieceAt(pieceGameObject, initialPiece.X, initialPiece.Y,
                         match3Config.FillOffsetY, match3Config.FillMoveTime);
                 }
             }
+        }
+
+        public GameObject SetPieceAt(GameObject prefab, int x, int y)
+        {
+            return Instantiate(prefab, new Vector3(x, y, 0f), Quaternion.identity, piecesGridRoot);
+        }
+
+        public void ClearBoard()
+        {
+            tileGridRoot.gameObject.DestroyChildObjects();
+            piecesGridRoot.gameObject.DestroyChildObjects();
         }
     }
 }
