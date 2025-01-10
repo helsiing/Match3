@@ -42,7 +42,7 @@ namespace VoodooMatch3.UI
         private void LoadLevelList()
         {
             levelListPanel.gameObject.SetActive(true);
-            levelListPanel.LoadLevelList();
+            levelListPanel.Init();
             levelHudUI.gameObject.SetActive(false);
             endLevelPanelUI.gameObject.SetActive(false);
         }
@@ -51,6 +51,7 @@ namespace VoodooMatch3.UI
         {
             levelListPanel.gameObject.SetActive(false);
             levelHudUI.gameObject.SetActive(true);
+            levelHudUI.Init();
             endLevelPanelUI.gameObject.SetActive(false);
         }
         
@@ -59,7 +60,7 @@ namespace VoodooMatch3.UI
             levelListPanel.gameObject.SetActive(false);
             levelHudUI.gameObject.SetActive(false);
             endLevelPanelUI.gameObject.SetActive(true);
-            endLevelPanelUI.SetContent(true);
+            endLevelPanelUI.Init(true);
         }
         
         private void OnLooseGame()
@@ -67,7 +68,7 @@ namespace VoodooMatch3.UI
             levelListPanel.gameObject.SetActive(false);
             levelHudUI.gameObject.SetActive(false);
             endLevelPanelUI.gameObject.SetActive(true);
-            endLevelPanelUI.SetContent(false);
+            endLevelPanelUI.Init(false);
         }
     }
 }

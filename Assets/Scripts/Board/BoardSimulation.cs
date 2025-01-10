@@ -117,13 +117,10 @@ namespace VoodooMatch3
                     
                     if (clickedMatches.Count == 0 && targetMatches.Count == 0)
                     {
-                        if (clickedPiece.GameObject.activeSelf && targetPiece.GameObject.activeSelf)
-                        {
-                            clickedPiece.Move(clickedTile.PositionIndex.x, clickedTile.PositionIndex.y,
-                                match3Config.SwapDuration);
-                            targetPiece.Move(targetTile.PositionIndex.x, targetTile.PositionIndex.y,
-                                match3Config.SwapDuration);
-                        }
+                        clickedPiece.Move(clickedTile.PositionIndex.x, clickedTile.PositionIndex.y,
+                            match3Config.SwapDuration);
+                        targetPiece.Move(targetTile.PositionIndex.x, targetTile.PositionIndex.y,
+                            match3Config.SwapDuration);
                     }
                     else
                     {
@@ -191,7 +188,7 @@ namespace VoodooMatch3
                     yield return null;
                 }
 
-                //yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(.25f);
 
                 matches = board.FindMatchesAt(movingPieces);
                 if (matches.Count == 0)

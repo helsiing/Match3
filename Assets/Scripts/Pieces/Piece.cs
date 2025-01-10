@@ -12,6 +12,7 @@ namespace VoodooMatch3
         Vector2Int PositionIndex { get; }
         PieceTemplate PieceTemplate { get; }
         GameObject GameObject { get; }
+        public bool IsPieceFalling();
         void SetParent(Transform parent);
         void Init(IBoard board);
         void SetPosition(int x, int y);
@@ -44,6 +45,11 @@ namespace VoodooMatch3
             
             piecePresentation = GetComponent<PiecePresentation>();
             Assert.IsNotNull(piecePresentation, "piecePresentation != null");
+        }
+
+        public bool IsPieceFalling()
+        {
+            return !(transform.position.y - (float) PositionIndex.y > 0.001f);
         }
 
         public void SetParent(Transform parent)

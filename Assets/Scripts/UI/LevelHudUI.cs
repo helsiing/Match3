@@ -1,4 +1,3 @@
-using System;
 using Managers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +13,7 @@ namespace VoodooMatch3.UI
 
         private IUiService uiService;
         
-        public void Start()
+        public void Init()
         {
             ServiceLocator.Global.Get(out uiService);
             levelListButton.onClick.AddListener(OnShowLevelList);

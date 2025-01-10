@@ -248,12 +248,9 @@ namespace VoodooMatch3
         {
             foreach (IPiece piece in pieces)
             {
-                if (piece != null && piece.GameObject != null)
+                if (piece != null && piece.IsPieceFalling())
                 {
-                    if (piece.GameObject.transform.position.y - (float) piece.PositionIndex.y > 0.001f)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
 

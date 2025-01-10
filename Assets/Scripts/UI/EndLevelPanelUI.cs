@@ -20,7 +20,7 @@ namespace VoodooMatch3.UI
             levelListButton.onClick.AddListener(OnShowLevelList);
         }
 
-        public void SetContent(bool winGame)
+        public void Init(bool winGame)
         {
             if (winGame)
             {

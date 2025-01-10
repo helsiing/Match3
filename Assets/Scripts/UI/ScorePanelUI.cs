@@ -18,16 +18,13 @@ namespace VoodooMatch3.UI
         private Coroutine countCoroutine;
 
         private int counterValue = 0;
-        
-        private void Start()
-        {
-            ServiceLocator.Global.Get(out scoreService);
-            scoreService.OnScoreUpdated += OnScoreUpdated;
-        }
 
         public void Init()
         {
-            SetCurrentScoreText(scoreService.GetCurrentScore());
+            ServiceLocator.Global.Get(out scoreService);
+            scoreService.OnScoreUpdated += OnScoreUpdated;
+            
+            SetCurrentScoreText(0);
             SetScoreToWinText(scoreService.GetScoreGoal());
         }
         
@@ -38,14 +35,24 @@ namespace VoodooMatch3.UI
 
         private void OnDisable()
         {
-            StopCoroutine(countCoroutine);
+            if (countCoroutine != null)
+            {
+                StopCoroutine(countCoroutine);
+            }
         }
 
         private void OnScoreUpdated(int previousScore, int newScore)
         {
-            if (gameObject.activeSelf)
+            if (gameObject.transform.parent.gameObject.activeSelf)
             {
-                countCoroutine = StartCoroutine(CountScoreRoutine(previousScore, newScore));
+                if (previousScore != newScore)
+                {
+                    countCoroutine = StartCoroutine(CountScoreRoutine(previousScore, newScore));
+                }
+                else
+                {
+                    SetCurrentScoreText(newScore);
+                }
             }
         }
 

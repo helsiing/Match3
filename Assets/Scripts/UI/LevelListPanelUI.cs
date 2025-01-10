@@ -12,7 +12,7 @@ namespace VoodooMatch3.UI
 
         [SerializeField] private Transform gridRoot;
         
-        public void LoadLevelList()
+        public void Init()
         {
             gridRoot.gameObject.DestroyChildObjects();
             

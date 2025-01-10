@@ -12,7 +12,6 @@ namespace VoodooMatch3.UI
         
         private void Start()
         {
-            ServiceLocator.Global.Get(out scoreService);
             scoreService.OnMovesLeftUpdated += SetCurrentMovesLeftText;
         }
 
@@ -31,6 +30,7 @@ namespace VoodooMatch3.UI
 
         public void Init()
         {
+            ServiceLocator.Global.Get(out scoreService);
             SetCurrentMovesLeftText(scoreService.GetMovesLeft());
         }
     }
