@@ -72,7 +72,7 @@ namespace VoodooMatch3
 
         public void Move(int destX, int destY, float moveTime, bool isMoveCollapsing = false)
         {
-            pieceSimulation.Move(destX, destY, moveTime);
+            pieceSimulation?.Move(destX, destY, moveTime);
             if (isMoveCollapsing)
             {
                 StartCoroutine(piecePresentation.PlayLandAnimation(moveTime));

@@ -5,14 +5,14 @@ using VoodooMatch3.Utils;
 
 namespace VoodooMatch3.UI
 {
-    public class LevelListUI : MonoBehaviour
+    public class LevelListPanelUI : MonoBehaviour
     {
         [SerializeField] LevelTemplateCollection levels;
         [SerializeField] GameObject levelPanelPrefab;
 
         [SerializeField] private Transform gridRoot;
         
-        private void Start()
+        public void LoadLevelList()
         {
             gridRoot.gameObject.DestroyChildObjects();
             

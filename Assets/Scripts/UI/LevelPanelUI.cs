@@ -1,10 +1,10 @@
-using System;
 using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VoodooMatch3.Models;
 using VoodooMatch3.Models.Traits;
+using VoodooMatch3.Services;
 using VoodooMatch3.Utils;
 
 namespace VoodooMatch3.UI
@@ -19,15 +19,17 @@ namespace VoodooMatch3.UI
         [SerializeField] private Button startButton;
 
         private LevelTemplate levelTemplate;
+        private IUiService uiService;
 
-        private void Awake()
+        private void Start()
         {
+            ServiceLocator.Global.Get(out uiService);
             startButton.onClick.AddListener(OnStartButtonClicked);
         }
 
         private void OnStartButtonClicked()
         {
-            GameManager.Instance.LoadLevel?.Invoke(levelTemplate);
+            uiService.LoadLevel?.Invoke(levelTemplate);
         }
 
         public void SetContent(LevelTemplate levelTemplate)

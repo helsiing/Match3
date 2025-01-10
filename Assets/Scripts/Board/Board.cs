@@ -1,18 +1,18 @@
 #region
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Managers;
 using UnityEngine;
 using VoodooMatch3.Models;
 using VoodooMatch3.Models.Traits;
-
+using VoodooMatch3.Services;
 #endregion
 
 namespace VoodooMatch3
 {
     public interface IBoard
     {
-        public ScoreManager ScoreManager { get; }
         public LevelTemplate LevelTemplate { get; }
         public IPiece[,] AllPieces { get; }
         public void ClickTile(GridTile tile);
@@ -36,8 +36,6 @@ namespace VoodooMatch3
     [RequireComponent(typeof(BoardSimulation))]
     public class Board : MonoBehaviour, IBoard
     {
-        public ScoreManager ScoreManager => ScoreManager.Instance;
-        
         [SerializeField] private BoardCamera boardCamera;
         [SerializeField] private LevelTemplate levelTemplate;
         
@@ -51,6 +49,9 @@ namespace VoodooMatch3
         
         private BoardPresentation boardPresentation;
         private BoardSimulation boardSimulation;
+        
+        private IUiService uiService;
+        private IScoreService scoreService;
 
         private void Awake()
         {
@@ -60,8 +61,14 @@ namespace VoodooMatch3
 
         public void Start()
         {
-            //LoadLevel(levelTemplate);
-            GameManager.Instance.LoadLevel += OnLoadLevel;
+            ServiceLocator.Global.Get(out scoreService);
+            ServiceLocator.Global.Get(out uiService);
+            uiService.LoadLevel += OnLoadLevel;
+        }
+
+        private void OnDestroy()
+        {
+            uiService.LoadLevel -= OnLoadLevel;
         }
 
         private void OnLoadLevel(LevelTemplate levelTemplate)
@@ -71,21 +78,21 @@ namespace VoodooMatch3
 
         private void LoadLevel(LevelTemplate levelTemplate)
         {
-            allTiles = new GridTile[levelTemplate.Width, levelTemplate.Height];
-            allPieces = new IPiece[levelTemplate.Width, levelTemplate.Height];
-
+            this.levelTemplate = levelTemplate;
             boardSimulation.Init(this, match3Config);
             boardPresentation.Init(this, levelTemplate, match3Config);
             
+            allTiles = new GridTile[levelTemplate.Width, levelTemplate.Height];
+            allPieces = new IPiece[levelTemplate.Width, levelTemplate.Height];
             boardCamera.SetupCamera(levelTemplate.Width, levelTemplate.Height);
-
-            ClearBoard();
+            
+            boardPresentation.ClearBoard();
             boardPresentation.SetupTiles();
             boardPresentation.SetupInitialPieces();
             
             FillBoard(match3Config.FillOffsetY, match3Config.FillMoveTime);
             
-            ScoreManager.Init(levelTemplate.ScoreToWin, levelTemplate.TotalMoves);
+            scoreService.Init(levelTemplate.ScoreToWin, levelTemplate.TotalMoves);
         }
 
         public IPiece GetPieceAt(int x, int y)
@@ -300,12 +307,12 @@ namespace VoodooMatch3
 
         public void ScorePoints(int value)
         {
-            ScoreManager.AddScore(value);
+            scoreService.AddScore(value);
         }
         
         public void DecrementMovesLeft()
         {
-            ScoreManager.DecrementMovesLeft();
+            scoreService.DecrementMovesLeft();
         }
 
         public void SetEmptyPieceAt(int x, int y)

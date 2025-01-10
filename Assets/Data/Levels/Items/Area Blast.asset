@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6033b4dc34ba9794f874b74fb5a8e7d2, type: 3}
-  m_Name: Level_3
+  m_Name: Area Blast
   m_EditorClassIdentifier: 
   guid:
-    value1: 5195268309898849030
-    value2: 1605031813178319291
+    value1: 4871892792809595836
+    value2: 6234835012016858520
   collectionGUID:
     value1: 5251755627102699140
     value2: -7312320831771740227
   width: 7
   height: 7
-  scoreToWin: 500
+  scoreToWin: 1000
+  totalMoves: 10
   timeToWin: 1000
   tilePrefab: {fileID: 5003974817802510734, guid: 91de6bd93c5a47843a2341e625225594, type: 3}
   availableColorPieces:
@@ -29,4 +30,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d8deb042938874097be72aa85fa78f40, type: 2}
   - {fileID: 11400000, guid: 3488df38992ba4a61b0a60590c413027, type: 2}
   - {fileID: 11400000, guid: 9381112975c664d80b37fc2568b16781, type: 2}
-  initialPieces: []
+  initialPieces:
+  - X: 0
+    Y: 0
+    PieceTemplate: {fileID: 11400000, guid: 12f6e92c3375544ff82f74b7a61c2796, type: 2}
+  - X: 2
+    Y: 2
+    PieceTemplate: {fileID: 11400000, guid: 12f6e92c3375544ff82f74b7a61c2796, type: 2}

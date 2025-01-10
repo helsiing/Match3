@@ -1,11 +1,12 @@
 ﻿#region
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Managers;
 using UnityEngine;
-using VoodooMatch3.Models;
 using VoodooMatch3.Models.Traits;
-
+using VoodooMatch3.Services;
 #endregion
 
 namespace VoodooMatch3
@@ -20,11 +21,27 @@ namespace VoodooMatch3
         private bool playerInputEnabled = true;
         private int width;
         private int height;
+        
+        private IScoreService scoreService;
+
+        public void Start()
+        {
+            ServiceLocator.Global.Get(out scoreService);
+            scoreService.OnWinGame += OnWinGame;
+            scoreService.OnLooseGame += OnLooseGame;
+        }
+
+        private void OnDestroy()
+        {
+            scoreService.OnWinGame -= OnWinGame;
+            scoreService.OnLooseGame -= OnLooseGame;
+        }
 
         public void Init(IBoard board, Match3Config match3Config)
         {
             this.board = board;
             this.match3Config = match3Config;
+            playerInputEnabled = true;
         }
         
         public void ClickTile(GridTile tile)
@@ -100,10 +117,13 @@ namespace VoodooMatch3
                     
                     if (clickedMatches.Count == 0 && targetMatches.Count == 0)
                     {
-                        clickedPiece.Move(clickedTile.PositionIndex.x, clickedTile.PositionIndex.y,
-                            match3Config.SwapDuration);
-                        targetPiece.Move(targetTile.PositionIndex.x, targetTile.PositionIndex.y,
-                            match3Config.SwapDuration);
+                        if (clickedPiece.GameObject.activeSelf && targetPiece.GameObject.activeSelf)
+                        {
+                            clickedPiece.Move(clickedTile.PositionIndex.x, clickedTile.PositionIndex.y,
+                                match3Config.SwapDuration);
+                            targetPiece.Move(targetTile.PositionIndex.x, targetTile.PositionIndex.y,
+                                match3Config.SwapDuration);
+                        }
                     }
                     else
                     {
@@ -153,11 +173,11 @@ namespace VoodooMatch3
 
             bool isFinished = false;
 
-            board.ScoreManager.ResetScoreMultiplier();
+            scoreService.ResetScoreMultiplier();
             
             while (!isFinished)
             {
-                board.ScoreManager.IncrementScoreMultiplier();
+                scoreService.IncrementScoreMultiplier();
                 
                 List<IPiece> affectedPiecesByBonus = Match3Utils.GetPiecesAffectedByBonusPiece(board.AllPieces, board.LevelTemplate.Width, board.LevelTemplate.Height, pieces);
                 pieces = pieces.Union(affectedPiecesByBonus).ToList();
@@ -181,7 +201,7 @@ namespace VoodooMatch3
                 }
                 else
                 {
-                    board.ScoreManager.IncrementScoreMultiplier();
+                    scoreService.IncrementScoreMultiplier();
                     yield return StartCoroutine(ClearAndCollapseCoroutine(matches));
                 }
             }
@@ -220,6 +240,16 @@ namespace VoodooMatch3
                     Destroy(pieceToDestroy.GameObject);
                 }    
             }
+        }
+        
+        private void OnLooseGame()
+        {
+            playerInputEnabled = false;
+        }
+
+        private void OnWinGame()
+        {
+            playerInputEnabled = false;
         }
     }
 }

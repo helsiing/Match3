@@ -7,7 +7,7 @@ namespace VoodooMatch3
     public class BoardCamera : MonoBehaviour
     {
         [SerializeField]
-        private float yOffset = 1.5f;
+        private float yOffset = 1f;
         public void SetupCamera(int width, int height)
         {
             float cameraX = width / 2;

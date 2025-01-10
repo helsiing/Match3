@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6033b4dc34ba9794f874b74fb5a8e7d2, type: 3}
+  m_Name: Ice Ice Baby
+  m_EditorClassIdentifier: 
+  guid:
+    value1: 5195268309898849030
+    value2: 1605031813178319291
+  collectionGUID:
+    value1: 5251755627102699140
+    value2: -7312320831771740227
+  width: 5
+  height: 7
+  scoreToWin: 500
+  totalMoves: 10
+  timeToWin: 1000
+  tilePrefab: {fileID: 5003974817802510734, guid: 91de6bd93c5a47843a2341e625225594, type: 3}
+  availableColorPieces:
+  - {fileID: 11400000, guid: 964842569885345d3b27b57a5c6376a0, type: 2}
+  - {fileID: 11400000, guid: d8deb042938874097be72aa85fa78f40, type: 2}
+  - {fileID: 11400000, guid: 3488df38992ba4a61b0a60590c413027, type: 2}
+  - {fileID: 11400000, guid: 9381112975c664d80b37fc2568b16781, type: 2}
+  initialPieces:
+  - X: 2
+    Y: 2
+    PieceTemplate: {fileID: 11400000, guid: dbb6f8235a2de4b55b2abeba6b71e9db, type: 2}
+  - X: 3
+    Y: 5
+    PieceTemplate: {fileID: 11400000, guid: dbb6f8235a2de4b55b2abeba6b71e9db, type: 2}

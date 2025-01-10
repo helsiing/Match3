@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using VoodooMatch3.Models;
-using VoodooMatch3.Models.Traits;
 
 namespace VoodooMatch3.UI
 {

@@ -1,7 +1,10 @@
 ﻿#region
+using System;
+using Managers;
 using UnityEngine;
 using VoodooMatch3.Models;
 using VoodooMatch3.Models.Traits;
+using VoodooMatch3.Services;
 using VoodooMatch3.Utils;
 
 #endregion
@@ -16,7 +19,25 @@ namespace VoodooMatch3
         private IBoard board;
         private LevelTemplate levelTemplate;
         private Match3Config match3Config;
-       
+        private IScoreService scoreService;
+        private IUiService uiService;
+
+        private void Start()
+        {
+            ServiceLocator.Global.Get(out scoreService);
+            ServiceLocator.Global.Get(out uiService);
+            scoreService.OnWinGame += ClearBoard;
+            scoreService.OnLooseGame += ClearBoard;
+            uiService.LoadLevelList += ClearBoard;
+        }
+        
+        private void OnDestroy()
+        {
+            scoreService.OnWinGame -= ClearBoard;
+            scoreService.OnLooseGame -= ClearBoard;            
+            uiService.LoadLevelList -= ClearBoard;
+        }
+
         public void Init(IBoard board, LevelTemplate levelTemplate, Match3Config match3Config)
         {
             this.board = board;
