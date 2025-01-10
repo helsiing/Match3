@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Managers;
 using TMPro;
 using UnityEngine;
@@ -14,13 +15,18 @@ namespace VoodooMatch3.UI
         [SerializeField] private TMP_Text scoreText;
         [SerializeField] private TMP_Text scoreToWinText;
 
+        private Coroutine countCoroutine;
+
         private int counterValue = 0;
         
         private void Start()
         {
             ServiceLocator.Global.Get(out scoreService);
             scoreService.OnScoreUpdated += OnScoreUpdated;
-            
+        }
+
+        public void Init()
+        {
             SetCurrentScoreText(scoreService.GetCurrentScore());
             SetScoreToWinText(scoreService.GetScoreGoal());
         }
@@ -30,9 +36,17 @@ namespace VoodooMatch3.UI
             scoreService.OnScoreUpdated -= OnScoreUpdated;
         }
 
+        private void OnDisable()
+        {
+            StopCoroutine(countCoroutine);
+        }
+
         private void OnScoreUpdated(int previousScore, int newScore)
         {
-            StartCoroutine(CountScoreRoutine(previousScore, newScore));
+            if (gameObject.activeSelf)
+            {
+                countCoroutine = StartCoroutine(CountScoreRoutine(previousScore, newScore));
+            }
         }
 
         private void SetCurrentScoreText(int scoreValue)

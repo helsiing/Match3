@@ -18,6 +18,9 @@ namespace VoodooMatch3.UI
         {
             ServiceLocator.Global.Get(out uiService);
             levelListButton.onClick.AddListener(OnShowLevelList);
+            
+            scorePanelUI.Init();
+            movesLeftPanelUI.Init();
         }
         
         private void OnShowLevelList()

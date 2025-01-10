@@ -79,8 +79,11 @@ namespace VoodooMatch3
         private void LoadLevel(LevelTemplate levelTemplate)
         {
             this.levelTemplate = levelTemplate;
+            
+            scoreService.Init(levelTemplate.ScoreToWin, levelTemplate.TotalMoves);
             boardSimulation.Init(this, match3Config);
             boardPresentation.Init(this, levelTemplate, match3Config);
+            boardPresentation.ShowBoard();
             
             allTiles = new GridTile[levelTemplate.Width, levelTemplate.Height];
             allPieces = new IPiece[levelTemplate.Width, levelTemplate.Height];
@@ -91,8 +94,6 @@ namespace VoodooMatch3
             boardPresentation.SetupInitialPieces();
             
             FillBoard(match3Config.FillOffsetY, match3Config.FillMoveTime);
-            
-            scoreService.Init(levelTemplate.ScoreToWin, levelTemplate.TotalMoves);
         }
 
         public IPiece GetPieceAt(int x, int y)

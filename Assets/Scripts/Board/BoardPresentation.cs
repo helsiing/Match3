@@ -1,5 +1,6 @@
 ﻿#region
 using System;
+using DG.Tweening;
 using Managers;
 using UnityEngine;
 using VoodooMatch3.Models;
@@ -13,6 +14,7 @@ namespace VoodooMatch3
 {
     public class BoardPresentation : MonoBehaviour
     {
+        [SerializeField] private Transform boardRoot;
         [SerializeField] private Transform tileGridRoot;
         [SerializeField] private Transform piecesGridRoot;
         
@@ -26,16 +28,16 @@ namespace VoodooMatch3
         {
             ServiceLocator.Global.Get(out scoreService);
             ServiceLocator.Global.Get(out uiService);
-            scoreService.OnWinGame += ClearBoard;
-            scoreService.OnLooseGame += ClearBoard;
-            uiService.LoadLevelList += ClearBoard;
+            scoreService.OnWinGame += HideBoard;
+            scoreService.OnLooseGame += HideBoard;
+            uiService.LoadLevelList += HideBoard;
         }
         
         private void OnDestroy()
         {
-            scoreService.OnWinGame -= ClearBoard;
-            scoreService.OnLooseGame -= ClearBoard;            
-            uiService.LoadLevelList -= ClearBoard;
+            scoreService.OnWinGame -= HideBoard;
+            scoreService.OnLooseGame -= HideBoard;            
+            uiService.LoadLevelList -= HideBoard;
         }
 
         public void Init(IBoard board, LevelTemplate levelTemplate, Match3Config match3Config)
@@ -79,6 +81,16 @@ namespace VoodooMatch3
         public GameObject SetPieceAt(GameObject prefab, int x, int y)
         {
             return Instantiate(prefab, new Vector3(x, y, 0f), Quaternion.identity, piecesGridRoot);
+        }
+
+        public void ShowBoard()
+        {
+            boardRoot.localScale = Vector3.one;
+        }
+        
+        public void HideBoard()
+        {
+            boardRoot.localScale = Vector3.zero;
         }
 
         public void ClearBoard()

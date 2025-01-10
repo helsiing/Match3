@@ -26,7 +26,7 @@ namespace Managers
         public Action OnWinGame { get; set; }
         public Action OnLooseGame { get; set; }
         
-        private int currentScore = 0;
+        private int currentScore;
         private int scoreMultiplier = 1;
         private int scoreToWin;
         private int currentMovesLeft = 0;
@@ -36,10 +36,14 @@ namespace Managers
             return currentMovesLeft;
         }
 
-        public void Init(int scoreToWin, int totalMoves)
+        public void Init(int scoreToWin, int currentMovesLeft)
         {
+            currentScore = 0;
             this.scoreToWin = scoreToWin;
-            this.currentMovesLeft = totalMoves;
+            this.currentMovesLeft = currentMovesLeft;
+            
+            OnScoreUpdated?.Invoke(currentScore, currentScore);
+            OnMovesLeftUpdated?.Invoke(currentMovesLeft);
             
         }
         
