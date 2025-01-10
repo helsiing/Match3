@@ -21,7 +21,7 @@ namespace VoodooMatch3
                 matches = matches.Union(simpleMatches).ToList();
             }
 
-            /*List<IPiece> twoByTwoMatches = new List<IPiece>();
+            List<IPiece> twoByTwoMatches = new List<IPiece>();
             // Check for 2x2 matches
             for (int x = 0; x < width - 1; x++)
             {
@@ -34,7 +34,7 @@ namespace VoodooMatch3
                     }
                 }
             }
-            matches = matches.Union(twoByTwoMatches).ToList();*/
+            matches = matches.Union(twoByTwoMatches).ToList();
             
             
             return matches;
@@ -268,8 +268,8 @@ namespace VoodooMatch3
 
             return rowPieces;
         }
-        
-        public static List<IPiece> GetColumnPieces(IPiece[,] allPieces, int height, int column)
+
+        private static List<IPiece> GetColumnPieces(IPiece[,] allPieces, int height, int column)
         {
             List<IPiece> columnPieces = new List<IPiece>();
 
@@ -280,8 +280,8 @@ namespace VoodooMatch3
 
             return columnPieces;
         }
-        
-        public static List<IPiece> GetAdjacentPieces(IPiece[,] allPieces, int width, int height, int x, int y, int offset = 1)
+
+        private static List<IPiece> GetAdjacentPieces(IPiece[,] allPieces, int width, int height, int x, int y, int offset = 1)
         {
             List<IPiece> adjacentPieces = new List<IPiece>();
             for(int i = x - offset; i <= x + offset; i++)

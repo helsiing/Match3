@@ -6,7 +6,7 @@ namespace Services
 {
     public class GameBootstrapper : MonoBehaviour
     {
-        protected void Start()
+        protected void Awake()
         {
             ServiceLocator.Global.Register<IUiService>(new UiService());
             ServiceLocator.Global.Register<IScoreService>(new ScoreService());
