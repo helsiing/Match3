@@ -27,6 +27,9 @@ namespace VoodooMatch3.Models
         [SerializeField] private int scoreToWin = 100;
         public int ScoreToWin => scoreToWin;
         
+        [SerializeField] private int totalMoves = 10;
+        public int TotalMoves => totalMoves;
+        
         [SerializeField] private int timeToWin = 1000;
         public int TimeToWin => timeToWin;
         
@@ -64,6 +67,11 @@ namespace VoodooMatch3.Models
             }
             
             if(scoreToWin <= 0)
+            {
+                return false;
+            }
+            
+            if(totalMoves <= 0)
             {
                 return false;
             }

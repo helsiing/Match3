@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05cb207343be8cc4c889cc92fb56aef7, type: 3}
   m_Name: Piece (Green)
   m_EditorClassIdentifier: 
-  points: 0
+  points: 25
   Traits:
   - rid: 3924880703208554545
   - rid: 3924880703208554550

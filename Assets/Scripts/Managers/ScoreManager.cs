@@ -11,23 +11,31 @@ namespace Managers
 
         private int scoreMultiplier = 1;
         private int scoreToWin;
+
+        private int currentMovesLeft = 0;
         
         [SerializeField]
         private int increment;
         
         [SerializeField]
         private ScorePanelUI scorePanelUI;
+        
+        [SerializeField]
+        private MovesLeftPanelUI movesLeftPanelUI;
 
-        public void Init(int scoreToWin)
+        public void Init(int scoreToWin, int totalMoves)
         {
             this.scoreToWin = scoreToWin;
+            this.currentMovesLeft = totalMoves;
+            
+            movesLeftPanelUI.SetCurrentMovesLeftText(currentMovesLeft);
+            
             scorePanelUI.SetCurrentScoreText(currentScore);
             scorePanelUI.SetScoreToWinText(scoreToWin);
         }
 
         public void AddScore(int value)
         {
-            
             if(currentScore + value > scoreToWin)
             {
                 currentScore = scoreToWin;
@@ -37,6 +45,19 @@ namespace Managers
             {
                 currentScore += value * scoreMultiplier;
                 StartCoroutine(CountScoreRoutine());
+            }
+        }
+
+        public void DecrementMovesLeft()
+        {
+            if(currentMovesLeft > 0)
+            {
+                currentMovesLeft--;
+                movesLeftPanelUI.SetCurrentMovesLeftText(currentMovesLeft);
+            }
+            else
+            {
+                Debug.Log("LOSE GAME");
             }
         }
         

@@ -18,9 +18,10 @@ MonoBehaviour:
   collectionGUID:
     value1: 5251755627102699140
     value2: -7312320831771740227
-  width: 5
-  height: 5
+  width: 6
+  height: 6
   scoreToWin: 1000
+  totalMoves: 10
   timeToWin: 1000
   tilePrefab: {fileID: 5003974817802510734, guid: 91de6bd93c5a47843a2341e625225594, type: 3}
   availableColorPieces:

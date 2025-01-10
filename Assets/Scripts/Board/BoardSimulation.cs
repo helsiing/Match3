@@ -57,6 +57,7 @@ namespace VoodooMatch3
                     ClearAndRefillBoard(affectedPieces);
                 }
                 
+                board.DecrementMovesLeft();
                 clickedTile = null;
             }
             else if (clickedTile != null && targetTile != null)
@@ -95,6 +96,8 @@ namespace VoodooMatch3
                     List<IPiece> targetMatches =
                         Match3Utils.FindMatchesAt(board.AllPieces, board.LevelTemplate.Width, board.LevelTemplate.Height, targetTile.PositionIndex.x, targetTile.PositionIndex.y);
 
+                    board.DecrementMovesLeft();
+                    
                     if (clickedMatches.Count == 0 && targetMatches.Count == 0)
                     {
                         clickedPiece.Move(clickedTile.PositionIndex.x, clickedTile.PositionIndex.y,
@@ -189,6 +192,7 @@ namespace VoodooMatch3
         private IEnumerator DestroyPieceAt(List<IPiece> pieces)
         {
             List<IPiece> destroyablePieces = pieces.Where(piece => piece != null && piece.PieceTemplate.HasTrait<Destroyable>()).ToList();
+            
             foreach (IPiece piece in destroyablePieces.Where(piece => piece != null))
             {
                 piece.OnPieceDestroyed();
@@ -207,11 +211,14 @@ namespace VoodooMatch3
         
         public void DestroyPieceAt(int x, int y)
         {
-            IPiece pieceToDestroy = board.GetPieceAt(x, y);
-            if (pieceToDestroy != null)
+            if (Match3Utils.IsWithinBounds(board.LevelTemplate.Width, board.LevelTemplate.Height, x, y))
             {
-                board.SetEmptyPieceAt(x, y);
-                Destroy(pieceToDestroy.GameObject);
+                IPiece pieceToDestroy = board.GetPieceAt(x, y);
+                if (pieceToDestroy != null)
+                {
+                    board.SetEmptyPieceAt(x, y);
+                    Destroy(pieceToDestroy.GameObject);
+                }    
             }
         }
     }

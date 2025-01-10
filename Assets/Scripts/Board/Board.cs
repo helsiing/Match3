@@ -28,6 +28,7 @@ namespace VoodooMatch3
 
         public IPiece SetPieceAt(GameObject randomPiece, int x, int y, int falseYOffset, float moveTime);
         public void ScorePoints(int value);
+        public void DecrementMovesLeft();
         public void SetEmptyPieceAt(int x, int y);
     }
     
@@ -84,12 +85,17 @@ namespace VoodooMatch3
             
             FillBoard(match3Config.FillOffsetY, match3Config.FillMoveTime);
             
-            ScoreManager.Init(levelTemplate.ScoreToWin);
+            ScoreManager.Init(levelTemplate.ScoreToWin, levelTemplate.TotalMoves);
         }
 
         public IPiece GetPieceAt(int x, int y)
         {
-            return allPieces[x, y];
+            if (Match3Utils.IsWithinBounds(levelTemplate.Width, levelTemplate.Height, x, y))
+            {
+                return allPieces[x, y];
+            }
+
+            return null;
         }
         
         public void SetGridPieceAt(int x, int y, GridTile tile)
@@ -295,6 +301,11 @@ namespace VoodooMatch3
         public void ScorePoints(int value)
         {
             ScoreManager.AddScore(value);
+        }
+        
+        public void DecrementMovesLeft()
+        {
+            ScoreManager.DecrementMovesLeft();
         }
 
         public void SetEmptyPieceAt(int x, int y)
